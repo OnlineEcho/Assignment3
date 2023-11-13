@@ -1,0 +1,4 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center">{% block title %}AUTHENTICATED USER {{session["email"]}}!{% endblock %}</h1>
+{% endblock %}

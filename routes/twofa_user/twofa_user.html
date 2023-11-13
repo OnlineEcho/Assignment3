@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center">{% block title %}2FA{% endblock %}</h1>
+<div class="d-flex justify-content-center">
+    <form method="post">
+        <div class="d-flex flex-column justify-content-center">
+            <label for="twofa">Two Factor Authentication Code</label>
+            <input id="twofa" type="number" name="twofa">
+        </div>
+        <br>
+        <div class="d-flex flex-column justify-content-center">
+            <label for="submit"></label>
+            <button class="btn btn-primary btn-block" id="submit" type="submit">Authenticate</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
