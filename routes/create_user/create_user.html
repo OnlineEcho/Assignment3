@@ -11,8 +11,13 @@
     {% endwith %}
 </div>
 {% if qr_code %}
-<div class="d-flex flex-row justify-content-center">
-    <img src="data:image/png;base64,{{ qr_code.decode('utf-8') }}" alt="2FA QR Code">
+<div class="d-flex flex-column justify-content-center">
+    <div class="d-flex justify-content-center">
+        <img src="data:image/png;base64,{{ qr_code.decode('utf-8') }}" alt="2FA QR Code">
+    </div>
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-light btn-block" type="button" href="/">Log in Page</a>
+    </div>
 </div>
 {% else %}
 <div class="d-flex justify-content-center">
@@ -23,7 +28,21 @@
         </div>
         <div class="d-flex flex-column justify-content-center">
             <label for="password">Password</label>
-            <input id="password" type="password" name="password" minlength="8" maxlength="56">
+            <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    minlength="12"
+                    maxlength="56"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}"
+            >
+            <p class="text-muted small">
+                Must contain at least;<br>
+                one uppercase letter <br>
+                one lower case letter <br>
+                one digit <br>
+                one special character
+            </p>
         </div>
         <br>
         <div class="d-flex flex-column justify-content-center">
@@ -31,11 +50,13 @@
             <button class="btn btn-primary btn-block" id="submit" type="submit">Create User</button>
         </div>
         <br>
+        <div class="d-flex flex-column justify-content-center">
+            <a class="btn btn-light btn-block" type="button" href="/">Log in Page</a>
+        </div>
     </form>
+
 </div>
 {% endif %}
-<div class="d-flex flex-column justify-content-center">
-    <a class="btn btn-light btn-block" type="button" href="/">Log in Page</a>
-</div>
+
 
 {% endblock %}

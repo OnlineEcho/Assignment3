@@ -19,7 +19,12 @@
         </div>
         <div class="d-flex flex-column justify-content-center">
             <label for="password">Password</label>
-            <input id="password" type="password" name="password" value={{request.form["password"]}}>
+            <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}"
+            >
         </div>
         <br>
         <div class="d-flex flex-column justify-content-center">

@@ -8,18 +8,18 @@ from routes.login_page.login_page import login_page
 from routes.create_user.create_user import create_user
 from routes.twofa_user.twofa_user import twofa_user
 
-
 app = Flask("Authentication App", template_folder='routes')
 app.secret_key = os.urandom(24)  # session handling
 csp = {
     'default-src': 'self',
     'style-src': 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css',
+    'img-src': 'data:',
 }
 Talisman(app, content_security_policy=csp)
 limiter = Limiter(  # rate limit
     get_remote_address,
     app=app,
-    default_limits=["10/day"]
+    default_limits=["30/day"]
 )
 db_session = get_session()  # Get database session
 
